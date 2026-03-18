@@ -6,7 +6,7 @@ import Skills from './components/Skills'
 import ProjectList from './components/ProjectList'
 import Contact from './components/Contact'
 import CustomCursor from './components/CustomCursor'
-import Preloader from './components/Preloader.tsx'
+import Preloader from './components/Preloader'
 import Navbar from './components/Navbar'
 import type { Project } from './types';
 import './index.css'
@@ -17,7 +17,8 @@ function App() {
 
   useEffect(() => {
     const fetchProjects = () => {
-      fetch('http://localhost:5000/api/projects')
+      const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+      fetch(`${API_URL}/api/projects`)
         .then(res => res.json())
         .then(data => {
           setProjects(data);

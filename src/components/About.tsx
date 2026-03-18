@@ -1,4 +1,3 @@
-import React from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import { useRef } from 'react';
 import gsap from 'gsap';
