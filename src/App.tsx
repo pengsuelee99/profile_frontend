@@ -8,7 +8,6 @@ import Contact from './components/Contact'
 import CustomCursor from './components/CustomCursor'
 import Preloader from './components/Preloader'
 import Navbar from './components/Navbar'
-import { fallbackProjects } from './data/projects'
 import type { Project } from './types';
 import './index.css'
 
@@ -21,18 +20,12 @@ function App() {
       const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
       
       try {
-        const controller = new AbortController();
-        const timeoutId = setTimeout(() => controller.abort(), 60000); // 60s timeout for Render cold start
-        
-        const res = await fetch(`${API_URL}/api/projects`, { signal: controller.signal });
-        clearTimeout(timeoutId);
-        
-        if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
-        const data = await res.json();
+        const response = await fetch(`${API_URL}/api/projects`);
+        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+        const data = await response.json();
         setProjects(data);
       } catch (err) {
-        console.error("❌ Error fetching projects, using fallback:", err);
-        setProjects(fallbackProjects);
+        console.error("❌ Error fetching projects:", err);
       } finally {
         setIsLoading(false);
       }
