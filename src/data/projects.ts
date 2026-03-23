@@ -14,7 +14,7 @@ export const fallbackProjects: Project[] = [
     "tags": ["React", "Tailwind", "Python", "Django"],
     "link": "#",
     "status": "Developing",
-    "image": "/projects/project1.png"
+    "image": "projects/project1.png"
   },
   {
     "id": 2,
@@ -29,7 +29,7 @@ export const fallbackProjects: Project[] = [
     "tags": ["React.js", "Python", "API"],
     "link": "https://github.com/pengsuelee99",
     "status": "Coming Soon",
-    "image": "/projects/project2.png"
+    "image": "projects/project2.png"
   },
   {
     "id": 3,
@@ -44,6 +44,6 @@ export const fallbackProjects: Project[] = [
     "tags": ["FastAPI", "Streamlit", "Python"],
     "link": "https://github.com/pengsuelee99",
     "status": "Completed",
-    "image": "/projects/project3.png"
+    "image": "projects/project3.png"
   }
 ];
