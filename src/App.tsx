@@ -8,6 +8,7 @@ import Contact from './components/Contact'
 import CustomCursor from './components/CustomCursor'
 import Preloader from './components/Preloader'
 import Navbar from './components/Navbar'
+import { fallbackProjects } from './data/projects'
 import type { Project } from './types';
 import './index.css'
 
@@ -30,7 +31,8 @@ function App() {
         const data = await res.json();
         setProjects(data);
       } catch (err) {
-        console.error("❌ Error fetching projects:", err);
+        console.error("❌ Error fetching projects, using fallback:", err);
+        setProjects(fallbackProjects);
       } finally {
         setIsLoading(false);
       }
