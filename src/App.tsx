@@ -16,18 +16,24 @@ function App() {
   const [projects, setProjects] = useState<Project[]>([]);
 
   useEffect(() => {
-    const fetchProjects = () => {
+    const fetchProjects = async () => {
       const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
-      fetch(`${API_URL}/api/projects`)
-        .then(res => res.json())
-        .then(data => {
-          setProjects(data);
-          setIsLoading(false);
-        })
-        .catch(err => {
-          console.error("❌ Error fetching projects:", err);
-          setIsLoading(false);
-        });
+      
+      try {
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 10000); // 10s timeout
+        
+        const res = await fetch(`${API_URL}/api/projects`, { signal: controller.signal });
+        clearTimeout(timeoutId);
+        
+        if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
+        const data = await res.json();
+        setProjects(data);
+      } catch (err) {
+        console.error("❌ Error fetching projects:", err);
+      } finally {
+        setIsLoading(false);
+      }
     };
 
     // Initial fetch
