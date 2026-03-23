@@ -77,7 +77,7 @@ const ProjectModal = ({ project, onClose }: ProjectModalProps) => {
           <div className="w-full md:w-1/2 bg-slate-950 flex items-center justify-center relative group overflow-hidden border-b md:border-b-0 md:border-r border-slate-800">
              {project.image ? (
                <img 
-                 src={project.image} 
+                 src={project.image.startsWith('http') ? project.image : `${import.meta.env.BASE_URL}${project.image}`} 
                  alt={project.title} 
                  className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
                />

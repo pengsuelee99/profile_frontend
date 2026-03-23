@@ -38,10 +38,10 @@ const ProjectList = ({ initialProjects }: ProjectListProps) => {
                 className="bg-slate-900/50 rounded-3xl overflow-hidden border border-slate-800 hover:border-blue-500/50 transition-all group cursor-pointer backdrop-blur-sm"
               >
                 {/* Project Card Image */}
-              <div className="h-56 bg-slate-950 relative overflow-hidden group-hover:bg-blue-600/5 transition-colors">
+                <div className="h-56 bg-slate-950 relative overflow-hidden group-hover:bg-blue-600/5 transition-colors">
                 {project.image ? (
                   <img 
-                    src={project.image} 
+                    src={project.image.startsWith('http') ? project.image : `${import.meta.env.BASE_URL}${project.image}`} 
                     alt={project.title} 
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
