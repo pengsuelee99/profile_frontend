@@ -55,7 +55,7 @@ const About = ({ projectCount }: AboutProps) => {
           <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-purple-600 rounded-3xl blur opacity-20 group-hover:opacity-40 transition duration-1000"></div>
           <div className="relative bg-slate-900 rounded-3xl aspect-[4/5] overflow-hidden border border-slate-800 shadow-2xl">
             <img 
-              src="/profile.jpg" 
+              src="profile.jpg" 
               alt="PENG SUE LEE MR" 
               className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
             />
