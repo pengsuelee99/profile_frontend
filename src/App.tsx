@@ -21,7 +21,7 @@ function App() {
       
       try {
         const controller = new AbortController();
-        const timeoutId = setTimeout(() => controller.abort(), 10000); // 10s timeout
+        const timeoutId = setTimeout(() => controller.abort(), 60000); // 60s timeout for Render cold start
         
         const res = await fetch(`${API_URL}/api/projects`, { signal: controller.signal });
         clearTimeout(timeoutId);
